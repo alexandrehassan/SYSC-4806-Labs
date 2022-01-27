@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>AlexandreHassan</groupId>
-    <artifactId>Lab2</artifactId>
+    <artifactId>SYSC-4806</artifactId>
     <version>Lab2</version>
 
     <properties>
@@ -34,45 +34,13 @@
         </dependency>
     </dependencies>
     <build>
-
         <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.9.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>attached</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <finalName>${project.artifactId}-runner</finalName>
-                            <attach>false</attach>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <archive>
-                                <manifest>
-                                    <mainClass>AddressBook</mainClass>
-                                </manifest>
-                            </archive>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-        <!-- <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
+                    <outputDirectory>SubmissionJar/</outputDirectory>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
@@ -81,6 +49,6 @@
                     </archive>
                 </configuration>
             </plugin>
-        </plugins> -->
+        </plugins>
     </build>
 </project>
