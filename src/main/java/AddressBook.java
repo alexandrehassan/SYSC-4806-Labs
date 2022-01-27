@@ -1,4 +1,6 @@
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class made for SYSC 4806 course lab 1 to multiple a Buddies information
@@ -6,42 +8,97 @@ import java.util.ArrayList;
  * @author Alexandre Hassan
  * @version january 20, 2022
  */
+@Entity
 public class AddressBook{
-
-    private ArrayList<BuddyInfo> myBuddies;
+    @OneToMany( cascade = CascadeType.PERSIST)
+    private List<BuddyInfo> buddyInfoList;
+    @Id
+    @GeneratedValue
+    private Long id;
 
     public AddressBook(){
-        myBuddies=new ArrayList<>();
+        buddyInfoList=new ArrayList<>();
     }
 
     public void addBuddy(BuddyInfo aBuddy){
         if (aBuddy != null) {
-            myBuddies.add(aBuddy);
+            buddyInfoList.add(aBuddy);
         }
     }
 
     public BuddyInfo removeBuddy(int index){
-        if (index >= 0 && index < myBuddies.size()) {
-            return myBuddies.remove(index);
+        if (index >= 0 && index < buddyInfoList.size()) {
+            return buddyInfoList.remove(index);
         }
         return null;
     }
 
-    public String getBuddyInfo(int index){
-        if (index >= 0 && index < myBuddies.size()) {
-            BuddyInfo buddy;
-            buddy=myBuddies.get(index);
-            return buddy.getName() + "'s address is: " + " Phone: " + buddy.getPhoneNumber();
+    public BuddyInfo getBuddyInfo(int index){
+        try {
+            return buddyInfoList.get(index);
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Invalid Index");
+            return null;
         }
-        return "invalid index";
     }
 
+    public BuddyInfo getBuddyInfo(Long id){
+        for(BuddyInfo buddyInfo: buddyInfoList){
+            if (buddyInfo.getId().equals(id)){
+                return buddyInfo;
+            }
+        }
+        return null;
+    }
+
+    public List<BuddyInfo> getBuddyInfoList(){
+        return buddyInfoList;
+    }
+
+    public void setBuddyInfoList(List<BuddyInfo> buddyInfoList){
+        this.buddyInfoList=buddyInfoList;
+    }
+
+    /**
+     * Gets the id of this Player. The persistence provider should
+     * autogenerate a unique id for new player objects.
+     * @return the id
+     */
+
+    public Long getId() {
+        return this.id;
+    }
+
+    /**
+     * Sets the id of this Player to the specified value.
+     * @param id the new id
+     */
+    public void setId(Long id){
+        this.id=id;
+    }
+
+//    @Override
+//    public String toString(){
+//        StringBuilder str =new StringBuilder();
+//        for (BuddyInfo b: buddyInfoList){
+//            str.append(b).append("\n");
+//        }
+//        return str.toString();
+//    }
 
     public static void main(String[] args){
-        BuddyInfo buddy=new BuddyInfo("Tom", "613");
         AddressBook addressBook=new AddressBook();
+
+        BuddyInfo buddy=new BuddyInfo("Tom", "613");
         addressBook.addBuddy(buddy);
+        buddy=new BuddyInfo("Sarah", "2");
+        addressBook.addBuddy(buddy);
+        buddy=new BuddyInfo("Sally", "3");
+        addressBook.addBuddy(buddy);
+
         System.out.println(addressBook.getBuddyInfo(0));
+        System.out.println(addressBook);
     }
+
 
 }

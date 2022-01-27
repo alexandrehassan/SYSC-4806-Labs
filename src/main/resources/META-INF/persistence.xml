@@ -6,6 +6,7 @@
     <persistence-unit name="Lab" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>BuddyInfo</class>
+        <class>AddressBook</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:sample.db"/>
@@ -13,4 +14,5 @@
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
         </properties>
     </persistence-unit>
+
 </persistence>

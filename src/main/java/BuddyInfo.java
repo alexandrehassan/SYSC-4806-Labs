@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class BuddyInfo{
 
-    private int id;
+    private Long id;
     private String name;
     private String phoneNumber;
 
@@ -41,7 +41,7 @@ public class BuddyInfo{
      */
     @Id
     @GeneratedValue
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
@@ -49,7 +49,7 @@ public class BuddyInfo{
      * Sets the id of this Player to the specified value.
      * @param id the new id
      */
-    public void setId(int id){
+    public void setId(Long id){
         this.id=id;
     }
 
@@ -70,5 +70,8 @@ public class BuddyInfo{
         this.name=phoneNumber;
     }
 
-
+//    @Override
+//    public String toString(){
+//        return "Name=" + name + ", phoneNumber=" + phoneNumber ;
+//    }
 }

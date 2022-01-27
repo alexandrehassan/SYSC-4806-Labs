@@ -1,9 +1,5 @@
 import org.junit.Test;
-
 import javax.persistence.*;
-
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 /**
@@ -34,19 +30,17 @@ public class BuddyInfoTest{
         EntityManager em = emf.createEntityManager();
 
 
-        int testID = addTestObjects(em);
-        List<BuddyInfo> results = queryTestObjects(em);
+        Long testID = addTestObjects(em);
+        BuddyInfo buddyInfo = queryTestObjects(em, testID);
 
-        assertEquals("Query returned more than one object",1,results.size());
-        BuddyInfo testBuddy = results.get(0);
+        assertNotNull(buddyInfo);
 
-        assertEquals("TestObject",testBuddy.getName());
-        assertEquals("TestNumber",testBuddy.getPhoneNumber());
-        assertEquals(testID, testBuddy.getId());
-        removeTestObjects(em,testBuddy);
+        assertEquals("TestObject",buddyInfo.getName());
+        assertEquals("TestNumber",buddyInfo.getPhoneNumber());
+        assertEquals(testID, buddyInfo.getId());
 
-        results = queryTestObjects(em);
-        assertEquals("Object not removed correctly",0,results.size());
+        removeTestObjects(em,buddyInfo);
+        assertNull(queryTestObjects(em, testID));
     }
 
 
@@ -57,7 +51,7 @@ public class BuddyInfoTest{
         em.getTransaction().commit();
     }
 
-    private int addTestObjects(EntityManager em){
+    private Long addTestObjects(EntityManager em){
         BuddyInfo buddyInfo = new BuddyInfo("TestObject","TestNumber");
 
         EntityTransaction tx = em.getTransaction();
@@ -69,11 +63,9 @@ public class BuddyInfoTest{
         return buddyInfo.getId();
     }
 
-    private List<BuddyInfo> queryTestObjects(EntityManager em){
+    private BuddyInfo queryTestObjects(EntityManager em, Long id){
         // Querying the contents of the database using JPQL query
-        Query q = em.createQuery("SELECT b FROM BuddyInfo b where b.name LIKE 'TestObject%'");
-
-        return q.getResultList();
+        return em.find(BuddyInfo.class, id);
     }
 
 

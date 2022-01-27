@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>AlexandreHassan</groupId>
-    <artifactId>2</artifactId>
+    <artifactId>Lab2</artifactId>
     <version>Lab2</version>
 
     <properties>
@@ -59,7 +59,7 @@
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>codelook.example.introductiontojpa.Runner</mainClass>
+                                    <mainClass>AddressBook</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
