@@ -40,7 +40,6 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
-                    <outputDirectory>SubmissionJar/</outputDirectory>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
