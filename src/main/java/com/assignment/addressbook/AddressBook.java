@@ -119,7 +119,6 @@ public class AddressBook{
             buddyInfo = new BuddyInfo("Buddy: "+i, "Buddy: "+i);
             addressBook.addBuddy(buddyInfo);
         }
-        Long addressBookID =addressBook.getId();
 
         // persist the object
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab");
@@ -132,7 +131,11 @@ public class AddressBook{
 
         tx.commit();
 
-        System.out.println(em.find(AddressBook.class, addressBookID));
+        Long addressBookID =addressBook.getId();
+        System.out.println(addressBookID);
+
+        AddressBook fromQuery = em.find(AddressBook.class, addressBookID);
+        System.out.println(fromQuery);
 
     }
 

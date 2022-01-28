@@ -54,7 +54,6 @@ public class BuddyInfoTest{
 
     private Long addTestObjects(EntityManager em){
         BuddyInfo buddyInfo = new BuddyInfo("TestObject","TestNumber");
-
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
