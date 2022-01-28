@@ -2,6 +2,7 @@ package com.assignment.addressbook;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 /**
  * Class made for SYSC 4806 course lab 2 to store a buddy's information
@@ -70,9 +71,21 @@ public class BuddyInfo{
         this.name=phoneNumber;
     }
 
-//    @Override
-//    public String toString(){
-//        return "Name=" + name + ", phoneNumber=" + phoneNumber ;
-//    }
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BuddyInfo buddyInfo=(BuddyInfo) o;
+        return Objects.equals(id, buddyInfo.id) && Objects.equals(name, buddyInfo.name) && Objects.equals(phoneNumber, buddyInfo.phoneNumber);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(id, name, phoneNumber);
+    }
+    @Override
+    public String toString(){
+        return "Name=" + name + ", phoneNumber=" + phoneNumber ;
+    }
 
 }

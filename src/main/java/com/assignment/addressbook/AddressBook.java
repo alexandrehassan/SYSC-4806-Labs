@@ -2,6 +2,7 @@ package com.assignment.addressbook;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class made for SYSC 4806 course lab 1 to multiple a Buddies information
@@ -78,15 +79,27 @@ public class AddressBook{
         this.id=id;
     }
 
-//    @Override
-//    public String toString(){
-//        StringBuilder str =new StringBuilder();
-//        for (BuddyInfo b: buddyInfoList){
-//            str.append(b).append("\n");
-//        }
-//        return str.toString();
-//    }
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AddressBook that=(AddressBook) o;
+        return Objects.equals(buddyInfoList, that.buddyInfoList) && Objects.equals(id, that.id);
+    }
 
+    @Override
+    public int hashCode(){
+        return Objects.hash(buddyInfoList, id);
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder str =new StringBuilder();
+        for (BuddyInfo b: buddyInfoList){
+            str.append(b).append("\n");
+        }
+        return str.toString();
+    }
 
     public static void main(String[] args){
         AddressBook addressBook=new AddressBook();
