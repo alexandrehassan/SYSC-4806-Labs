@@ -5,8 +5,8 @@
              version="2.2">
     <persistence-unit name="Lab" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>BuddyInfo</class>
-        <class>AddressBook</class>
+        <class>com.assignment.addressbook.AddressBook</class>
+        <class>com.assignment.addressbook.BuddyInfo</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:sample.db"/>

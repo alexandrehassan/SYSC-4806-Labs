@@ -1,3 +1,4 @@
+package com.assignment.addressbook;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
