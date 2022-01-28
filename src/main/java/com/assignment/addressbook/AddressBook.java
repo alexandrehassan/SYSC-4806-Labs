@@ -92,11 +92,21 @@ public class AddressBook{
         return Objects.hash(buddyInfoList, id);
     }
 
+//    @Override
+//    public String toString(){
+//        StringBuilder str =new StringBuilder();
+//        for (BuddyInfo b: buddyInfoList){
+//            str.append(b).append("\n");
+//        }
+//        return str.toString();
+//    }
+
     @Override
     public String toString(){
-        StringBuilder str =new StringBuilder();
+        StringBuilder str = new StringBuilder();
+        str.append("id=").append(id);
         for (BuddyInfo b: buddyInfoList){
-            str.append(b).append("\n");
+            str.append(" Buddy: ").append(b.getName());
         }
         return str.toString();
     }
@@ -109,7 +119,9 @@ public class AddressBook{
             buddyInfo = new BuddyInfo("Buddy: "+i, "Buddy: "+i);
             addressBook.addBuddy(buddyInfo);
         }
+        Long addressBookID =addressBook.getId();
 
+        // persist the object
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab");
         EntityManager em = emf.createEntityManager();
 
@@ -119,6 +131,8 @@ public class AddressBook{
         em.persist(addressBook);
 
         tx.commit();
+
+        System.out.println(em.find(AddressBook.class, addressBookID));
 
     }
 

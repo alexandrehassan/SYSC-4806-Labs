@@ -2,6 +2,7 @@ package com.assignment.addressbook;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Objects;
 
 /**
@@ -84,6 +85,7 @@ public class BuddyInfo{
         return Objects.hash(id, name, phoneNumber);
     }
     @Override
+    @Transient
     public String toString(){
         return "Name=" + name + ", phoneNumber=" + phoneNumber ;
     }
