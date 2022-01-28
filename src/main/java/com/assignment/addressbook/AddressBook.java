@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Class made for SYSC 4806 course lab 1 to multiple a Buddies information
+ * Class made for SYSC 4806 course lab 2 to multiple a Buddies information
  *
  * @author Alexandre Hassan
- * @version january 20, 2022
+ * @version january 26, 2022
  */
 @Entity
 public class AddressBook{
@@ -91,15 +91,6 @@ public class AddressBook{
     public int hashCode(){
         return Objects.hash(buddyInfoList, id);
     }
-
-//    @Override
-//    public String toString(){
-//        StringBuilder str =new StringBuilder();
-//        for (BuddyInfo b: buddyInfoList){
-//            str.append(b).append("\n");
-//        }
-//        return str.toString();
-//    }
 
     @Override
     public String toString(){

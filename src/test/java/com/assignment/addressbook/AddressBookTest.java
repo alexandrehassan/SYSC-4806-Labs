@@ -4,10 +4,10 @@ import javax.persistence.*;
 import static org.junit.Assert.*;
 
 /**
- * Incomplete test class for lab 1 of SYSC 4806
+ * Incomplete test class for lab 2 of SYSC 4806
  *
  * @author Alexandre Hassan
- * @version january 20, 2022
+ * @version january 26, 2022
  */
 public class AddressBookTest{
 
