@@ -87,19 +87,26 @@ public class AddressBook{
 //        return str.toString();
 //    }
 
+
     public static void main(String[] args){
         AddressBook addressBook=new AddressBook();
+        BuddyInfo buddyInfo;
 
-        BuddyInfo buddy=new BuddyInfo("Tom", "613");
-        addressBook.addBuddy(buddy);
-        buddy=new BuddyInfo("Sarah", "2");
-        addressBook.addBuddy(buddy);
-        buddy=new BuddyInfo("Sally", "3");
-        addressBook.addBuddy(buddy);
+        for(int i =0; i<5;i++){
+            buddyInfo = new BuddyInfo("Buddy: "+i, "Buddy: "+i);
+            addressBook.addBuddy(buddyInfo);
+        }
 
-        System.out.println(addressBook.getBuddyInfo(0));
-        System.out.println(addressBook);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab");
+        EntityManager em = emf.createEntityManager();
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        em.persist(addressBook);
+
+        tx.commit();
+
     }
-
 
 }

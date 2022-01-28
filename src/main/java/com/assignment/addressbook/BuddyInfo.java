@@ -11,7 +11,8 @@ import javax.persistence.Id;
  */
 @Entity
 public class BuddyInfo{
-
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String phoneNumber;
@@ -40,8 +41,6 @@ public class BuddyInfo{
      * autogenerate a unique id for new player objects.
      * @return the id
      */
-    @Id
-    @GeneratedValue
     public Long getId() {
         return this.id;
     }
@@ -75,4 +74,5 @@ public class BuddyInfo{
 //    public String toString(){
 //        return "Name=" + name + ", phoneNumber=" + phoneNumber ;
 //    }
+
 }
