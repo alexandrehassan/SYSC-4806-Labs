@@ -1,4 +1,3 @@
-package com.assignment.addressbook;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,30 +102,8 @@ public class AddressBook{
     }
 
     public static void main(String[] args){
-        AddressBook addressBook=new AddressBook();
-        BuddyInfo buddyInfo;
-
-        for(int i =0; i<5;i++){
-            buddyInfo = new BuddyInfo("Buddy: "+i, "Buddy: "+i);
-            addressBook.addBuddy(buddyInfo);
-        }
-
-        // persist the object
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab");
-        EntityManager em = emf.createEntityManager();
-
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-
-        em.persist(addressBook);
-
-        tx.commit();
-
-        Long addressBookID =addressBook.getId();
-        System.out.println(addressBookID);
-
-        AddressBook fromQuery = em.find(AddressBook.class, addressBookID);
-        System.out.println(fromQuery);
+        Launcher launcher = new Launcher();
+        launcher.launch();
 
     }
 

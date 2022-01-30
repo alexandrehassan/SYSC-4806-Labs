@@ -1,4 +1,3 @@
-package com.assignment.addressbook;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -84,6 +83,7 @@ public class BuddyInfo{
     public int hashCode(){
         return Objects.hash(id, name, phoneNumber);
     }
+
     @Override
     @Transient
     public String toString(){
