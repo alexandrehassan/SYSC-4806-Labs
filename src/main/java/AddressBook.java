@@ -21,12 +21,6 @@ public class AddressBook{
         buddyInfoList=new ArrayList<>();
     }
 
-    public static void main(String[] args){
-        Launcher launcher=new Launcher();
-        launcher.launch();
-
-    }
-
     public void addBuddy(BuddyInfo aBuddy){
         if (aBuddy != null) {
             buddyInfoList.add(aBuddy);
@@ -110,4 +104,8 @@ public class AddressBook{
         return str.toString();
     }
 
+    public static void main(String[] args){
+        Launcher launcher=new Launcher();
+        launcher.launch();
+    }
 }
