@@ -5,6 +5,11 @@
     <bean id="view" class="AddressBookView" init-method="init">
         <property name="contentPane" ref="mainPanel"/>
         <property name="title" value="Address book"/>
+        <property name="size" ref="viewSize"/>
+    </bean>
+    <bean id="viewSize" class="java.awt.Dimension">
+        <constructor-arg value="600"/>
+        <constructor-arg value="400"/>
     </bean>
     <bean id="model" class="AddressBookModel">
 
@@ -70,7 +75,7 @@
         <property name="text" value="Print buddies"/>
     </bean>
 
-    <bean id="printBuddiesButtonActionListener" class="printBuddiesActionListener">
+    <bean id="printBuddiesButtonActionListener" class="PrintBuddiesActionListener">
         <property name="model" ref="model"/>
     </bean>
 </beans>
