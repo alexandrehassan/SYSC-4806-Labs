@@ -1,5 +1,5 @@
+import javax.swing.*;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 public class ActionListenerButton extends JButton{
     private ActionListener actionListener;

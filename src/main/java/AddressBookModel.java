@@ -1,5 +1,5 @@
 public class AddressBookModel{
-    private AddressBook addressBook;
+    private final AddressBook addressBook;
 
     public AddressBookModel(){
         addressBook=new AddressBook();
