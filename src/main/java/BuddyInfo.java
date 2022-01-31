@@ -1,4 +1,3 @@
-package com.assignment.addressbook;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +16,7 @@ public class BuddyInfo{
     @GeneratedValue
     private Long id;
     private String name;
-    private String phoneNumber;
+    private final String phoneNumber;
 
 
     /**
@@ -30,7 +29,8 @@ public class BuddyInfo{
 
     /**
      * Creates an instance of BuddyInfo with given name and number
-     * @param name the name of the buddy
+     *
+     * @param name        the name of the buddy
      * @param phoneNumber the phone number of the buddy
      */
     public BuddyInfo(String name, String phoneNumber){
@@ -41,14 +41,16 @@ public class BuddyInfo{
     /**
      * Gets the id of this Player. The persistence provider should
      * autogenerate a unique id for new player objects.
+     *
      * @return the id
      */
-    public Long getId() {
+    public Long getId(){
         return this.id;
     }
 
     /**
      * Sets the id of this Player to the specified value.
+     *
      * @param id the new id
      */
     public void setId(Long id){
@@ -84,10 +86,11 @@ public class BuddyInfo{
     public int hashCode(){
         return Objects.hash(id, name, phoneNumber);
     }
+
     @Override
     @Transient
     public String toString(){
-        return "Name=" + name + ", phoneNumber=" + phoneNumber ;
+        return "Name=" + name + ", phoneNumber=" + phoneNumber;
     }
 
 }

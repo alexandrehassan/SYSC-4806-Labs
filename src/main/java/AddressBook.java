@@ -1,4 +1,3 @@
-package com.assignment.addressbook;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 public class AddressBook{
-    @OneToMany( cascade = CascadeType.PERSIST)
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<BuddyInfo> buddyInfoList;
     @Id
     @GeneratedValue
@@ -38,15 +37,15 @@ public class AddressBook{
     public BuddyInfo getBuddyInfo(int index){
         try {
             return buddyInfoList.get(index);
-        }catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid Index");
             return null;
         }
     }
 
     public BuddyInfo getBuddyInfo(Long id){
-        for(BuddyInfo buddyInfo: buddyInfoList){
-            if (buddyInfo.getId().equals(id)){
+        for (BuddyInfo buddyInfo : buddyInfoList) {
+            if (buddyInfo.getId().equals(id)) {
                 return buddyInfo;
             }
         }
@@ -64,15 +63,17 @@ public class AddressBook{
     /**
      * Gets the id of this Player. The persistence provider should
      * autogenerate a unique id for new player objects.
+     *
      * @return the id
      */
 
-    public Long getId() {
+    public Long getId(){
         return this.id;
     }
 
     /**
      * Sets the id of this Player to the specified value.
+     *
      * @param id the new id
      */
     public void setId(Long id){
@@ -94,40 +95,17 @@ public class AddressBook{
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder();
-        str.append("id=").append(id);
-        for (BuddyInfo b: buddyInfoList){
-            str.append(" Buddy: ").append(b.getName());
+        StringBuilder str=new StringBuilder();
+        str.append("id=").append(id).append("\n");
+        for (BuddyInfo b : buddyInfoList) {
+            str.append(" Buddy: ").append(b.getName())
+                    .append(" Phone: ").append(b.getPhoneNumber()).append("\n");
         }
         return str.toString();
     }
 
     public static void main(String[] args){
-        AddressBook addressBook=new AddressBook();
-        BuddyInfo buddyInfo;
-
-        for(int i =0; i<5;i++){
-            buddyInfo = new BuddyInfo("Buddy: "+i, "Buddy: "+i);
-            addressBook.addBuddy(buddyInfo);
-        }
-
-        // persist the object
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab");
-        EntityManager em = emf.createEntityManager();
-
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-
-        em.persist(addressBook);
-
-        tx.commit();
-
-        Long addressBookID =addressBook.getId();
-        System.out.println(addressBookID);
-
-        AddressBook fromQuery = em.find(AddressBook.class, addressBookID);
-        System.out.println(fromQuery);
-
+        Launcher launcher=new Launcher();
+        launcher.launch();
     }
-
 }

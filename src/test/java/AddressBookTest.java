@@ -1,4 +1,3 @@
-package com.assignment.addressbook;
 import org.junit.Test;
 import javax.persistence.*;
 import static org.junit.Assert.*;
