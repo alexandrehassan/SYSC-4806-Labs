@@ -1,3 +1,5 @@
+package com.AddressBook;
+
 public class AddressBookModel{
     private final AddressBook addressBook;
 

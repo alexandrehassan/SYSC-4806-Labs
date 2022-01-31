@@ -1,3 +1,5 @@
+package com.AddressBook;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +22,7 @@ public class BuddyInfo{
 
 
     /**
-     * Creates an instance of BuddyInfo with empty name and number
+     * Creates an instance of com.AddressBook.BuddyInfo with empty name and number
      */
     public BuddyInfo(){
         this.name="";
@@ -28,7 +30,7 @@ public class BuddyInfo{
     }
 
     /**
-     * Creates an instance of BuddyInfo with given name and number
+     * Creates an instance of com.AddressBook.BuddyInfo with given name and number
      *
      * @param name        the name of the buddy
      * @param phoneNumber the phone number of the buddy

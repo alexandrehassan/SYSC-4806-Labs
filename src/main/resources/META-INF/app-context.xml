@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="view" class="AddressBookView" init-method="init">
+    <bean id="view" class="com.AddressBook.AddressBookView" init-method="init">
         <property name="contentPane" ref="mainPanel"/>
         <property name="title" value="Address book"/>
         <property name="size" ref="viewSize"/>
@@ -11,8 +11,8 @@
         <constructor-arg value="600"/>
         <constructor-arg value="400"/>
     </bean>
-    <bean id="model" class="AddressBookModel"/>
-    <bean id="mainPanel" class="BoxLayoutPanel" init-method="init">
+    <bean id="model" class="com.AddressBook.AddressBookModel"/>
+    <bean id="mainPanel" class="com.AddressBook.BoxLayoutPanel" init-method="init">
         <property name="axis" value="1"/>
         <property name="panelComponents">
             <list>
@@ -30,7 +30,7 @@
     <bean id="phoneLabel" class="javax.swing.JLabel">
         <constructor-arg value="Phone: "/>
     </bean>
-    <bean id="namePanel" class="BoxLayoutPanel" init-method="init">
+    <bean id="namePanel" class="com.AddressBook.BoxLayoutPanel" init-method="init">
         <property name="axis" value="0"/>
         <property name="panelComponents">
             <list>
@@ -39,7 +39,7 @@
             </list>
         </property>
     </bean>
-    <bean id="phonePanel" class="BoxLayoutPanel" init-method="init">
+    <bean id="phonePanel" class="com.AddressBook.BoxLayoutPanel" init-method="init">
         <property name="axis" value="0"/>
         <property name="panelComponents">
             <list>
@@ -48,7 +48,7 @@
             </list>
         </property>
     </bean>
-    <bean id="buttonPanel" class="BoxLayoutPanel" init-method="init">
+    <bean id="buttonPanel" class="com.AddressBook.BoxLayoutPanel" init-method="init">
         <property name="axis" value="0"/>
         <property name="panelComponents">
             <list>
@@ -57,20 +57,20 @@
             </list>
         </property>
     </bean>
-    <bean id="addBuddyButton" class="ActionListenerButton" init-method="init">
+    <bean id="addBuddyButton" class="com.AddressBook.ActionListenerButton" init-method="init">
         <property name="actionListener" ref="addNewButtonActionListener"/>
         <property name="text" value="Add Buddy"/>
     </bean>
-    <bean id="addNewButtonActionListener" class="AddBuddyActionListener">
+    <bean id="addNewButtonActionListener" class="com.AddressBook.AddBuddyActionListener">
         <property name="model" ref="model"/>
         <property name="nameField" ref="nameTextField"/>
         <property name="phoneField" ref="phoneTextField"/>
     </bean>
-    <bean id="printBuddiesButton" class="ActionListenerButton" init-method="init">
+    <bean id="printBuddiesButton" class="com.AddressBook.ActionListenerButton" init-method="init">
         <property name="actionListener" ref="printBuddiesButtonActionListener"/>
         <property name="text" value="Print buddies"/>
     </bean>
-    <bean id="printBuddiesButtonActionListener" class="PrintBuddiesActionListener">
+    <bean id="printBuddiesButtonActionListener" class="com.AddressBook.PrintBuddiesActionListener">
         <property name="model" ref="model"/>
     </bean>
 </beans>

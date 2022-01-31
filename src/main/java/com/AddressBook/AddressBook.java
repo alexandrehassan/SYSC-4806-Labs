@@ -1,4 +1,4 @@
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+package com.AddressBook;
 
 import javax.persistence.*;
 import java.util.ArrayList;

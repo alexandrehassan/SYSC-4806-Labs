@@ -1,3 +1,5 @@
+package com.AddressBook;
+
 import javax.swing.*;
 
 public class AddressBookView extends JFrame{

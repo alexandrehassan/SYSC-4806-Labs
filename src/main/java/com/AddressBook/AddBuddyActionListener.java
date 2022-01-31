@@ -1,3 +1,5 @@
+package com.AddressBook;
+
 import java.awt.event.ActionEvent;
 
 public class AddBuddyActionListener extends AddressBookActionListener{

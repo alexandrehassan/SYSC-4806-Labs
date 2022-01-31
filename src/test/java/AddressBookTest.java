@@ -1,3 +1,5 @@
+import com.AddressBook.AddressBook;
+import com.AddressBook.BuddyInfo;
 import org.junit.Test;
 import javax.persistence.*;
 import static org.junit.Assert.*;
