@@ -11,9 +11,7 @@
         <constructor-arg value="600"/>
         <constructor-arg value="400"/>
     </bean>
-    <bean id="model" class="AddressBookModel">
-
-    </bean>
+    <bean id="model" class="AddressBookModel"/>
     <bean id="mainPanel" class="BoxLayoutPanel" init-method="init">
         <property name="axis" value="1"/>
         <property name="panelComponents">
@@ -63,18 +61,15 @@
         <property name="actionListener" ref="addNewButtonActionListener"/>
         <property name="text" value="Add Buddy"/>
     </bean>
-
     <bean id="addNewButtonActionListener" class="AddNewBuddyActionListener">
         <property name="model" ref="model"/>
         <property name="nameField" ref="nameTextField"/>
         <property name="phoneField" ref="phoneTextField"/>
     </bean>
-
     <bean id="printBuddiesButton" class="ActionListenerButton" init-method="init">
         <property name="actionListener" ref="printBuddiesButtonActionListener"/>
         <property name="text" value="Print buddies"/>
     </bean>
-
     <bean id="printBuddiesButtonActionListener" class="PrintBuddiesActionListener">
         <property name="model" ref="model"/>
     </bean>

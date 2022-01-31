@@ -1,13 +1,12 @@
 import javax.swing.*;
-import java.awt.*;
-import java.util.Iterator;
+import java.awt.Component;
 import java.util.List;
 
 public class BoxLayoutPanel extends JPanel{
-    private List panelComponents;
+    private List<Component> panelComponents;
     private int axis;
 
-    public void setPanelComponents(List panelComponents){
+    public void setPanelComponents(List<Component> panelComponents){
         this.panelComponents=panelComponents;
     }
 
@@ -18,8 +17,8 @@ public class BoxLayoutPanel extends JPanel{
     public void init(){
         setLayout(new BoxLayout(this, axis));
 
-        for (Iterator iterator=panelComponents.iterator(); iterator.hasNext(); ) {
-            add((Component) iterator.next());
+        for (Component panelComponent : panelComponents) {
+            add(panelComponent);
         }
     }
 
