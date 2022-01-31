@@ -61,7 +61,7 @@
         <property name="actionListener" ref="addNewButtonActionListener"/>
         <property name="text" value="Add Buddy"/>
     </bean>
-    <bean id="addNewButtonActionListener" class="AddNewBuddyActionListener">
+    <bean id="addNewButtonActionListener" class="AddBuddyActionListener">
         <property name="model" ref="model"/>
         <property name="nameField" ref="nameTextField"/>
         <property name="phoneField" ref="phoneTextField"/>

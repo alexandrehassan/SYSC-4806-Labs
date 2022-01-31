@@ -1,3 +1,5 @@
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

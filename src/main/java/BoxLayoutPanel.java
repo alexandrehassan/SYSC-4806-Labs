@@ -1,13 +1,28 @@
 import javax.swing.*;
-import java.awt.Component;
+import java.awt.*;
 import java.util.List;
 
 public class BoxLayoutPanel extends JPanel{
     private List<Component> panelComponents;
     private int axis;
 
+    public BoxLayoutPanel(){
+    }
+
+    public BoxLayoutPanel(int axis){
+        setLayout(new BoxLayout(this, axis));
+    }
+
+
     public void setPanelComponents(List<Component> panelComponents){
         this.panelComponents=panelComponents;
+    }
+
+    public void displayPanelComponents(List<Component> panelComponents){
+        for (Component panelComponent : panelComponents) {
+            add(panelComponent);
+        }
+
     }
 
     public void setAxis(int axis){
