@@ -29,7 +29,8 @@ public class BuddyInfo{
 
     /**
      * Creates an instance of BuddyInfo with given name and number
-     * @param name the name of the buddy
+     *
+     * @param name        the name of the buddy
      * @param phoneNumber the phone number of the buddy
      */
     public BuddyInfo(String name, String phoneNumber){
@@ -40,14 +41,16 @@ public class BuddyInfo{
     /**
      * Gets the id of this Player. The persistence provider should
      * autogenerate a unique id for new player objects.
+     *
      * @return the id
      */
-    public Long getId() {
+    public Long getId(){
         return this.id;
     }
 
     /**
      * Sets the id of this Player to the specified value.
+     *
      * @param id the new id
      */
     public void setId(Long id){
@@ -87,7 +90,7 @@ public class BuddyInfo{
     @Override
     @Transient
     public String toString(){
-        return "Name=" + name + ", phoneNumber=" + phoneNumber ;
+        return "Name=" + name + ", phoneNumber=" + phoneNumber;
     }
 
 }

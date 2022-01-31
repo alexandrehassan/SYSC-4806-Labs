@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 public class AddressBook{
-    @OneToMany( cascade = CascadeType.PERSIST)
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<BuddyInfo> buddyInfoList;
     @Id
     @GeneratedValue
@@ -37,15 +37,15 @@ public class AddressBook{
     public BuddyInfo getBuddyInfo(int index){
         try {
             return buddyInfoList.get(index);
-        }catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid Index");
             return null;
         }
     }
 
     public BuddyInfo getBuddyInfo(Long id){
-        for(BuddyInfo buddyInfo: buddyInfoList){
-            if (buddyInfo.getId().equals(id)){
+        for (BuddyInfo buddyInfo : buddyInfoList) {
+            if (buddyInfo.getId().equals(id)) {
                 return buddyInfo;
             }
         }
@@ -63,15 +63,17 @@ public class AddressBook{
     /**
      * Gets the id of this Player. The persistence provider should
      * autogenerate a unique id for new player objects.
+     *
      * @return the id
      */
 
-    public Long getId() {
+    public Long getId(){
         return this.id;
     }
 
     /**
      * Sets the id of this Player to the specified value.
+     *
      * @param id the new id
      */
     public void setId(Long id){
@@ -93,16 +95,16 @@ public class AddressBook{
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder();
+        StringBuilder str=new StringBuilder();
         str.append("id=").append(id);
-        for (BuddyInfo b: buddyInfoList){
+        for (BuddyInfo b : buddyInfoList) {
             str.append(" Buddy: ").append(b.getName());
         }
         return str.toString();
     }
 
     public static void main(String[] args){
-        Launcher launcher = new Launcher();
+        Launcher launcher=new Launcher();
         launcher.launch();
 
     }
