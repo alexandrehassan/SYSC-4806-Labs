@@ -2,60 +2,75 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="addressbookview" class="AddressBookView" init-method="init">
+    <bean id="view" class="AddressBookView" init-method="init">
         <property name="contentPane" ref="mainPanel"/>
         <property name="title" value="Address book"/>
+    </bean>
+    <bean id="model" class="AddressBookModel">
+
     </bean>
     <bean id="mainPanel" class="BoxLayoutPanel" init-method="init">
         <property name="axis" value="1"/>
         <property name="panelComponents">
             <list>
-                <ref bean="itemScrollPane"/>
+                <ref bean="namePanel"/>
+                <ref bean="phonePanel"/>
                 <ref bean="buttonPanel"/>
             </list>
         </property>
     </bean>
-    <bean id="itemScrollPane" class="javax.swing.JScrollPane">
-        <constructor-arg ref="itemTable"/>
+    <bean id="nameTextField" class="javax.swing.JTextField"/>
+    <bean id="phoneTextField" class="javax.swing.JTextField"/>
+    <bean id="nameLabel" class="javax.swing.JLabel">
+        <constructor-arg value="Name:  "/>
     </bean>
-    <bean id="itemTable" class="javax.swing.JTable">
-        <property name="model" ref="itemTableModel"/>
+    <bean id="phoneLabel" class="javax.swing.JLabel">
+        <constructor-arg value="Phone: "/>
     </bean>
-    <bean id="itemTableModel" class="ItemTableModel">
-        <property name="itemList" ref="itemList"/>
-    </bean>
-    <bean id="itemList" class="java.util.ArrayList">
-        <constructor-arg>
+    <bean id="namePanel" class="BoxLayoutPanel" init-method="init">
+        <property name="axis" value="0"/>
+        <property name="panelComponents">
             <list>
-                <value>Item 1</value>
-                <value>Item 2</value>
-                <value>Item 3</value>
+                <ref bean="nameLabel"/>
+                <ref bean="nameTextField"/>
             </list>
-        </constructor-arg>
+        </property>
+    </bean>
+    <bean id="phonePanel" class="BoxLayoutPanel" init-method="init">
+        <property name="axis" value="0"/>
+        <property name="panelComponents">
+            <list>
+                <ref bean="phoneLabel"/>
+                <ref bean="phoneTextField"/>
+            </list>
+        </property>
     </bean>
     <bean id="buttonPanel" class="BoxLayoutPanel" init-method="init">
         <property name="axis" value="0"/>
         <property name="panelComponents">
             <list>
-                <ref bean="deleteButton"/>
-                <ref bean="addNewButton"/>
+                <ref bean="addBuddyButton"/>
+                <ref bean="printBuddiesButton"/>
             </list>
         </property>
     </bean>
-    <bean id="deleteButton" class="ActionListenerButton" init-method="init">
-        <property name="actionListener" ref="deleteButtonActionListener"/>
-        <property name="text" value="Delete"/>
-    </bean>
-    <bean id="deleteButtonActionListener" class="DeleteButtonActionListener">
-        <property name="list" ref="itemList"/>
-        <property name="table" ref="itemTable"/>
-    </bean>
-    <bean id="addNewButton" class="ActionListenerButton" init-method="init">
+    <bean id="addBuddyButton" class="ActionListenerButton" init-method="init">
         <property name="actionListener" ref="addNewButtonActionListener"/>
-        <property name="text" value="Add New"/>
+        <property name="text" value="Add Buddy"/>
     </bean>
-    <bean id="addNewButtonActionListener" class="AddNewButtonActionListener">
-        <property name="list" ref="itemList"/>
-        <property name="table" ref="itemTable"/>
+
+    <bean id="addNewButtonActionListener" class="AddNewBuddyActionListener">
+        <property name="model" ref="model"/>
+        <property name="nameField" ref="nameTextField"/>
+        <property name="phoneField" ref="phoneTextField"/>
+    </bean>
+
+    <bean id="printBuddiesButton" class="ActionListenerButton" init-method="init">
+        <property name="actionListener" ref="printBuddiesButtonActionListener"/>
+        <property name="text" value="Print buddies"/>
+    </bean>
+
+    <bean id="printBuddiesButtonActionListener" class="printBuddiesActionListener">
+        <property name="model" ref="model"/>
     </bean>
 </beans>

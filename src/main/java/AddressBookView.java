@@ -7,7 +7,7 @@ public class AddressBookView extends JFrame{
         // Set up the frame
         setLayout(new GridLayout(3,2,20,20));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(300,300);
+        setSize(400, 400);
 
         setVisible(true);
     }

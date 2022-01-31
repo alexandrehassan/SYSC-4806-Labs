@@ -4,8 +4,7 @@ import javax.swing.JButton;
 public class ActionListenerButton extends JButton{
     private ActionListener actionListener;
 
-    public void setActionListener(ActionListener
-                                          actionListener){
+    public void setActionListener(ActionListener actionListener){
         this.actionListener=actionListener;
     }
 

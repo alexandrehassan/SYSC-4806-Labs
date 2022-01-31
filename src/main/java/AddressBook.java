@@ -96,9 +96,10 @@ public class AddressBook{
     @Override
     public String toString(){
         StringBuilder str=new StringBuilder();
-        str.append("id=").append(id);
+        str.append("id=").append(id).append("\n");
         for (BuddyInfo b : buddyInfoList) {
-            str.append(" Buddy: ").append(b.getName());
+            str.append(" Buddy: ").append(b.getName())
+                    .append(" Phone: ").append(b.getPhoneNumber()).append("\n");
         }
         return str.toString();
     }

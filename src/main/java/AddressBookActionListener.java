@@ -1,16 +1,20 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public abstract class AddressBookActionListener implements ActionListener{
-    protected JTable table;
-    protected List list;
+    protected JTextField nameField;
+    protected JTextField phoneField;
+    protected AddressBookModel model;
 
-    public void setList(List list){
-        this.list=list;
+    public void setNameField(JTextField nameField){
+        this.nameField=nameField;
     }
 
-    public void setTable(JTable itemTable){
-        this.table=itemTable;
+    public void setPhoneField(JTextField phoneField){
+        this.phoneField=phoneField;
+    }
+
+    public void setModel(AddressBookModel model){
+        this.model=model;
     }
 }
