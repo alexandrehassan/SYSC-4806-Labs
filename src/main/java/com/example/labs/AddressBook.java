@@ -106,8 +106,4 @@ public class AddressBook{
         return str.toString();
     }
 
-//    public static void main(String[] args){
-//        Launcher launcher=new Launcher();
-//        launcher.launch();
-//    }
 }
