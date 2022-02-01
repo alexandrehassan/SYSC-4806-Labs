@@ -26,9 +26,7 @@ public class AccessingDataJpaApplication{
             // fetch all customers
             log.info("--------------------------------------------");
             log.info("Customers found with findAll():");
-            for (BuddyInfo buddyInfo : repository.findAll()) {
-                log.info(buddyInfo.toString());
-            }
+            repository.findAll().forEach(buddyInfo -> log.info(buddyInfo.toString()));
             log.info("");
 
             // fetch an individual customer by ID
@@ -41,9 +39,7 @@ public class AccessingDataJpaApplication{
             // fetch customers by last name
             log.info("--------------------------------------------");
             log.info("Customer found with findByName('Paul'):");
-            repository.findByName("Paul").forEach(paul -> {
-                log.info(paul.toString());
-            });
+            repository.findByName("Paul").forEach(paul -> log.info(paul.toString()));
             log.info("");
 
             log.info("Customer found with findByName('Paul'):");

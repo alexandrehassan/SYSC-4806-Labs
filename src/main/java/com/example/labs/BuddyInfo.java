@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 /**
- * Class made for SYSC 4806 course lab 2 to store a buddy's information
+ * Class made for SYSC 4806 course lab 3 to store a buddy's information
  *
  * @author Alexandre Hassan
- * @version january 26, 2022
+ * @version january 31, 2022
  */
 @Entity
 public class BuddyInfo{

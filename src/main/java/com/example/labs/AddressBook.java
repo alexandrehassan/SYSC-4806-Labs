@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Class made for SYSC 4806 course lab 2 to multiple a Buddies information
+ * Class made for SYSC 4806 course lab 3 to multiple a Buddies information
  *
  * @author Alexandre Hassan
- * @version january 26, 2022
+ * @version january 31, 2022
  */
 @Entity
 public class AddressBook{
