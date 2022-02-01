@@ -8,47 +8,52 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class AccessingDataJpaApplication {
-
-    private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
-
-    public static void main(String[] args) {
-        SpringApplication.run(AccessingDataJpaApplication.class);
-    }
+public class AccessingDataJpaApplication{
+    private static final Logger log=LoggerFactory.getLogger(AccessingDataJpaApplication.class);
 
     @Bean
-    public CommandLineRunner demo(BuddyInfoRepository repository) {
+    public CommandLineRunner demo(BuddyInfoRepository repository){
         return (args) -> {
             // save a few customers
-            repository.save(new BuddyInfo("Bauer", "4"));
-            repository.save(new BuddyInfo("Chloe", "O'Brian"));
-            repository.save(new BuddyInfo("Bauer", "4"));
-            repository.save(new BuddyInfo("David", "Palmer"));
-            repository.save(new BuddyInfo("Michelle", "Dessler"));
+            repository.save(new BuddyInfo("Jack", "1"));
+            repository.save(new BuddyInfo("Jack", "2"));
+            repository.save(new BuddyInfo("Jack", "3"));
+            repository.save(new BuddyInfo("Jack", "4"));
+            repository.save(new BuddyInfo("Jack", "5"));
+            repository.save(new BuddyInfo("Paul", "6"));
+            repository.save(new BuddyInfo("Paul", "7"));
 
             // fetch all customers
+            log.info("--------------------------------------------");
             log.info("Customers found with findAll():");
-            log.info("-------------------------------");
             for (BuddyInfo buddyInfo : repository.findAll()) {
                 log.info(buddyInfo.toString());
             }
             log.info("");
 
             // fetch an individual customer by ID
-            BuddyInfo buddyInfo = repository.findById(1L);
+            log.info("--------------------------------------------");
             log.info("Customer found with findById(1L):");
-            log.info("--------------------------------\n\n");
+            BuddyInfo buddyInfo=repository.findById(1L);
             log.info(buddyInfo.toString());
             log.info("");
 
             // fetch customers by last name
-            log.info("Customer found with findByLastName('Bauer'):");
             log.info("--------------------------------------------");
-            repository.findByName("Bauer").forEach(bauer -> {
-                log.info(bauer.toString());
+            log.info("Customer found with findByName('Paul'):");
+            repository.findByName("Paul").forEach(paul -> {
+                log.info(paul.toString());
             });
+            log.info("");
+
+            log.info("Customer found with findByName('Paul'):");
+            buddyInfo=repository.findByPhoneNumber("4");
+            log.info(buddyInfo.toString());
             log.info("");
         };
     }
 
+    public static void main(String[] args){
+        SpringApplication.run(AccessingDataJpaApplication.class);
+    }
 }
