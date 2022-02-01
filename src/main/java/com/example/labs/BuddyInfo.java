@@ -1,34 +1,33 @@
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+package com.example.labs;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
- * Class made for SYSC 4806 course lab 2 to store a buddy's information
+ * Class made for SYSC 4806 course lab 3 to store a buddy's information
  *
  * @author Alexandre Hassan
- * @version january 26, 2022
+ * @version january 31, 2022
  */
 @Entity
 public class BuddyInfo{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
     private final String phoneNumber;
 
 
     /**
-     * Creates an instance of BuddyInfo with empty name and number
+     * Creates an instance of com.AddressBook.BuddyInfo with empty name and number
      */
-    public BuddyInfo(){
+    protected BuddyInfo(){
         this.name="";
         this.phoneNumber="";
     }
 
     /**
-     * Creates an instance of BuddyInfo with given name and number
+     * Creates an instance of com.AddressBook.BuddyInfo with given name and number
      *
      * @param name        the name of the buddy
      * @param phoneNumber the phone number of the buddy
