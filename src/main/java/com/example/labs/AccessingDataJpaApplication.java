@@ -25,24 +25,24 @@ public class AccessingDataJpaApplication{
 
             // fetch all customers
             log.info("--------------------------------------------");
-            log.info("Customers found with findAll():");
+            log.info("Buddies found with findAll():");
             repository.findAll().forEach(buddyInfo -> log.info(buddyInfo.toString()));
             log.info("");
 
             // fetch an individual customer by ID
             log.info("--------------------------------------------");
-            log.info("Customer found with findById(1L):");
+            log.info("Buddy found with findById(1L):");
             BuddyInfo buddyInfo=repository.findById(1L);
             log.info(buddyInfo.toString());
             log.info("");
 
             // fetch customers by last name
             log.info("--------------------------------------------");
-            log.info("Customer found with findByName('Paul'):");
+            log.info("Buddy found with findByName('Paul'):");
             repository.findByName("Paul").forEach(paul -> log.info(paul.toString()));
             log.info("");
 
-            log.info("Customer found with findByName('Paul'):");
+            log.info("Buddy found with findByPhoneNumber('4'):");
             buddyInfo=repository.findByPhoneNumber("4");
             log.info(buddyInfo.toString());
             log.info("");
