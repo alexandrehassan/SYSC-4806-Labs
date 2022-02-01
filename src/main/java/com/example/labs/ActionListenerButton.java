@@ -1,4 +1,4 @@
-package com.AddressBook;
+package com.example.labs;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

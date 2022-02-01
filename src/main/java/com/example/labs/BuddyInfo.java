@@ -1,9 +1,6 @@
-package com.AddressBook;
+package com.example.labs;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -15,7 +12,7 @@ import java.util.Objects;
 @Entity
 public class BuddyInfo{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
     private final String phoneNumber;
@@ -24,7 +21,7 @@ public class BuddyInfo{
     /**
      * Creates an instance of com.AddressBook.BuddyInfo with empty name and number
      */
-    public BuddyInfo(){
+    protected BuddyInfo(){
         this.name="";
         this.phoneNumber="";
     }

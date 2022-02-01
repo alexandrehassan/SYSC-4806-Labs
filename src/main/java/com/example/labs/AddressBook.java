@@ -1,4 +1,4 @@
-package com.AddressBook;
+package com.example.labs;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -106,8 +106,8 @@ public class AddressBook{
         return str.toString();
     }
 
-    public static void main(String[] args){
-        Launcher launcher=new Launcher();
-        launcher.launch();
-    }
+//    public static void main(String[] args){
+//        Launcher launcher=new Launcher();
+//        launcher.launch();
+//    }
 }

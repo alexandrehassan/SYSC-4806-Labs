@@ -1,4 +1,4 @@
-package com.AddressBook;
+package com.example.labs;
 
 public class AddressBookModel{
     private final AddressBook addressBook;
