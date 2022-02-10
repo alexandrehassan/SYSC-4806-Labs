@@ -1,31 +1,46 @@
 package com.example.labs;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
 public class AddressBookController{
-    @GetMapping("/buddyForm")
-    public String buddyForm(Model model){
-        model.addAttribute("buddy", new BuddyInfo());
-        return "buddyForm";
+    private final AddressBookRepository repository;
+    AddressBookController(AddressBookRepository repository){
+        this.repository = repository;
     }
 
-    @PostMapping("/buddyForm")
-    public String buddySubmit(@ModelAttribute BuddyInfo buddy, Model model) {
-        model.addAttribute("buddy", buddy);
-        return "buddyAddResult";
+    @GetMapping("/addressbooks")
+    public List<AddressBook> all(){
+        List<AddressBook> result = new ArrayList<>();
+        repository.findAll().forEach(result::add);
+        return result;
     }
 
+    @PostMapping("/addressbooks")
+    public AddressBook newAddressBook(@RequestBody AddressBook newAddressBook){
+        return repository.save(newAddressBook);
+    }
 
-//    @GetMapping("/main")
-//    public String home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-//        model.addAttribute("name", name);
-//        return "greeting";
-//    }
-//    @GetMapping("/fetch")
-//    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-//        return new Greeting(counter.incrementAndGet(), String.format(template, name));
-//    }
+    @GetMapping("/addressbook/{id}")
+    public AddressBook findByID(@PathVariable Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new InvalidAddressBookException(id));
+    }
+
+    @GetMapping("/addressbook/{id}/buddies")
+    public List<BuddyInfo> getABBuddies(@PathVariable Long id){
+        return findByID(id).getBuddyInfoList();
+    }
+
+    @PostMapping("/addressbook/{id}/buddies")
+    public
+
+    @GetMapping("/addressbook/{id}/buddies/{bid}")
+    public BuddyInfo getABBuddies(@PathVariable Long id,@PathVariable Long bid){
+        return findByID(id).getBuddyInfo(bid);
+    }
+
 }
