@@ -14,31 +14,32 @@ import java.util.Objects;
 @Entity
 public class AddressBook{
     @OneToMany(cascade=CascadeType.PERSIST)
-    private List<BuddyInfo> buddyInfoList;
+    @ElementCollection
+    private List<BuddyInfo> buddies;
     @Id
     @GeneratedValue
     private Long id;
 
     public AddressBook(){
-        buddyInfoList=new ArrayList<>();
+        buddies =new ArrayList<>();
     }
 
     public void addBuddy(BuddyInfo aBuddy){
         if (aBuddy != null) {
-            buddyInfoList.add(aBuddy);
+            buddies.add(aBuddy);
         }
     }
 
     public BuddyInfo removeBuddy(int index){
-        if (index >= 0 && index < buddyInfoList.size()) {
-            return buddyInfoList.remove(index);
+        if (index >= 0 && index < buddies.size()) {
+            return buddies.remove(index);
         }
         return null;
     }
 
     public BuddyInfo getBuddyInfo(int index){
         try {
-            return buddyInfoList.get(index);
+            return buddies.get(index);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid Index");
             return null;
@@ -46,7 +47,7 @@ public class AddressBook{
     }
 
     public BuddyInfo getBuddyInfo(Long id){
-        for (BuddyInfo buddyInfo : buddyInfoList) {
+        for (BuddyInfo buddyInfo : buddies) {
             if (buddyInfo.getId().equals(id)) {
                 return buddyInfo;
             }
@@ -54,12 +55,12 @@ public class AddressBook{
         return null;
     }
 
-    public List<BuddyInfo> getBuddyInfoList(){
-        return buddyInfoList;
+    public List<BuddyInfo> getBuddies(){
+        return buddies;
     }
 
-    public void setBuddyInfoList(List<BuddyInfo> buddyInfoList){
-        this.buddyInfoList=buddyInfoList;
+    public void setBuddies(List<BuddyInfo> buddyInfoList){
+        this.buddies =buddyInfoList;
     }
 
     /**
@@ -87,19 +88,19 @@ public class AddressBook{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddressBook that=(AddressBook) o;
-        return Objects.equals(buddyInfoList, that.buddyInfoList) && Objects.equals(id, that.id);
+        return Objects.equals(buddies, that.buddies) && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(buddyInfoList, id);
+        return Objects.hash(buddies, id);
     }
 
     @Override
     public String toString(){
         StringBuilder str=new StringBuilder();
         str.append("id=").append(id).append("\n");
-        for (BuddyInfo b : buddyInfoList) {
+        for (BuddyInfo b : buddies) {
             str.append(" Buddy: ").append(b.getName())
                     .append(" Phone: ").append(b.getPhoneNumber()).append("\n");
         }

@@ -32,11 +32,18 @@ public class AddressBookController{
 
     @GetMapping("/addressbook/{id}/buddies")
     public List<BuddyInfo> getABBuddies(@PathVariable Long id){
-        return findByID(id).getBuddyInfoList();
+        AddressBook ad = findByID(id);
+        System.out.println(ad);
+        return ad.getBuddies();
     }
 
     @PostMapping("/addressbook/{id}/buddies")
-    public
+    public void newBuddyInfo(@PathVariable Long id, @RequestBody BuddyInfo newBuddyInfo){
+        System.out.println(newBuddyInfo);
+        findByID(id).addBuddy(newBuddyInfo);
+        System.out.println(findByID(id));
+        repository.save(findByID(id));
+    }
 
     @GetMapping("/addressbook/{id}/buddies/{bid}")
     public BuddyInfo getABBuddies(@PathVariable Long id,@PathVariable Long bid){
