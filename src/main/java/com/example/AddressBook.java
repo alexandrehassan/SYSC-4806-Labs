@@ -27,21 +27,24 @@ public class AddressBook{
         this.id = id;
     }
 
-    public void addBuddy(BuddyInfo aBuddy){
+    public AddressBook addBuddy(BuddyInfo aBuddy){
         if(aBuddy != null){
             buddies.add(aBuddy);
+            aBuddy.setAddressBook(this);
         }
+        return this;
     }
 
 
-    public void removeBuddy(Long id){
+    public AddressBook removeBuddy(Long id){
         for(int i = 0; i < buddies.size(); i++){
             if(buddies.get(i).getId().equals(id)){
                 buddies.get(i).setAddressBook(null);
                 buddies.remove(i);
-                return;
+                return this;
             }
         }
+        return this;
     }
 
     public BuddyInfo getBuddyInfo(int index){

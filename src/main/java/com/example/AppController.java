@@ -24,39 +24,26 @@ public class AppController{
 
     @GetMapping("/new")
     public String newBuddy(Model model){
-        AddressBook book = new AddressBook();
-        addressBookRepository.save(book);
-
-        model.addAttribute("addressbook", book);
-        model.addAttribute("newBuddy", new BuddyInfo());
-        return "redirect:/addressbook/" + book.getId();
+        return "redirect:/addressbook/" + addressBookRepository.save(new AddressBook()).getId();
     }
 
 
     @GetMapping("/addressbook/{ID}")
     public String addBuddy(Model model, @PathVariable Long ID){
         AddressBook book = addressBookRepository.findById(ID).orElse(null);
-        if(book == null){
-            return "redirect:/new";
-        }
-        model.addAttribute("addressbook", book);
-        model.addAttribute("newBuddy", new BuddyInfo());
+        if(book == null) return "redirect:/new";
+
+        model.addAttribute("addressbook", book).addAttribute("newBuddy", new BuddyInfo());
         return "addressbook";
     }
 
     @PostMapping("/addressbook/{ID}")
     public String addBuddyToAddressBook(@ModelAttribute BuddyInfo buddy, Model model, @PathVariable Long ID){
-        AddressBook book = addressBookRepository.findById(ID).orElse(null);
-        if(book == null){
-            book = new AddressBook(ID);
-            addressBookRepository.save(book);
-        }
-        book.addBuddy(buddy);
-        buddy.setAddressBook(book);
-        addressBookRepository.save(book);
+        AddressBook book = addressBookRepository.findById(ID).orElseThrow();
 
-        model.addAttribute("addressbook", book);
-        model.addAttribute("newBuddy", new BuddyInfo());
+        addressBookRepository.save(book.addBuddy(buddy));
+
+        model.addAttribute("addressbook", book).addAttribute("newBuddy", new BuddyInfo());
         return "addressbook";
     }
 
@@ -72,8 +59,7 @@ public class AppController{
         AddressBook book = addressBookRepository.findById(ID).orElse(null);
         if(book == null) return "redirect:/";
 
-        book.removeBuddy(BID);
-        addressBookRepository.save(book);
+        addressBookRepository.save(book.removeBuddy(BID));
         return "redirect:/addressbook/" + book.getId();
     }
 
