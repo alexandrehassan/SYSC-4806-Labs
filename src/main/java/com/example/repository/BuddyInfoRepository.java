@@ -1,11 +1,12 @@
-package com.example.labs;
+package com.example.repository;
 
 import java.util.List;
+
+import com.example.BuddyInfo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "buddies", path = "buddies")
+@RepositoryRestResource(collectionResourceRel = "buddy", path="buddy")
 public interface BuddyInfoRepository extends CrudRepository<BuddyInfo,Long>{
     List<BuddyInfo> findByName(String name);
     BuddyInfo findByPhoneNumber(String num);

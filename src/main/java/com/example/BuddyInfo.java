@@ -1,4 +1,4 @@
-package com.example.labs;
+package com.example;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -16,6 +16,10 @@ public class BuddyInfo{
     private Long id;
     private String name;
     private final String phoneNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "addressbookId")
+    private AddressBook addressBook;
 
 
     /**
@@ -35,6 +39,12 @@ public class BuddyInfo{
     public BuddyInfo(String name, String phoneNumber){
         this.name=name;
         this.phoneNumber=phoneNumber;
+    }
+
+    public BuddyInfo(String name, String phoneNumber, AddressBook addressBook){
+        this.name=name;
+        this.phoneNumber=phoneNumber;
+        this.addressBook = addressBook;
     }
 
     /**
@@ -92,4 +102,11 @@ public class BuddyInfo{
         return "Name=" + name + ", phoneNumber=" + phoneNumber;
     }
 
+    public void setAddressBook(AddressBook book){
+        addressBook = book;
+    }
+
+    public Long getAddressBookId(){
+        return addressBook.getId();
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.labs;
+package com.example;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,8 +13,7 @@ import java.util.Objects;
  */
 @Entity
 public class AddressBook{
-    @OneToMany(cascade=CascadeType.PERSIST)
-    @ElementCollection
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "addressBook")
     private List<BuddyInfo> buddies;
     @Id
     @GeneratedValue
@@ -24,15 +23,29 @@ public class AddressBook{
         buddies =new ArrayList<>();
     }
 
+    public AddressBook(Long id){
+        buddies=new ArrayList<>();
+        this.id = id;
+    }
+
     public void addBuddy(BuddyInfo aBuddy){
         if (aBuddy != null) {
             buddies.add(aBuddy);
         }
     }
 
-    public BuddyInfo removeBuddy(int index){
-        if (index >= 0 && index < buddies.size()) {
-            return buddies.remove(index);
+//    public BuddyInfo removeBuddy(int index){
+//        if (index >= 0 && index < buddies.size()) {
+//            return buddies.remove(index);
+//        }
+//        return null;
+//    }
+
+    public BuddyInfo removeBuddy(Long id){
+        for (int i = 0; i < buddies.size(); i++){
+            if (buddies.get(i).getId().equals(id)){
+                return buddies.remove(i);
+            }
         }
         return null;
     }

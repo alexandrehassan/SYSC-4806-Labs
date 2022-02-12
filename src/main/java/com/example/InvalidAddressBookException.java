@@ -1,4 +1,4 @@
-package com.example.labs;
+package com.example;
 
 public class InvalidAddressBookException extends RuntimeException{
     public InvalidAddressBookException(Long id){
