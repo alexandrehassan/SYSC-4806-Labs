@@ -39,8 +39,7 @@ public class AppController{
     public String addBuddy(Model model, @PathVariable Long ID){
         AddressBook book = addressBookRepository.findById(ID).orElse(null);
         if(book == null){
-            book = new AddressBook(ID);
-            addressBookRepository.save(book);
+            return "redirect:/new";
         }
         model.addAttribute("addressbook", book);
         model.addAttribute("newBuddy", new BuddyInfo());
@@ -72,10 +71,15 @@ public class AppController{
 
     @GetMapping("/deletebuddy/{ID}/{BID}")
     public String removeBuddy(Model model, @PathVariable Long ID,@PathVariable Long BID){
-        AddressBook book = addressBookRepository.findById(ID).orElseThrow();
+        AddressBook book = addressBookRepository.findById(ID).get();
         book.removeBuddy(BID);
         addressBookRepository.save(book);
         return "redirect:/addressbook/"+book.getId();
+    }
+
+    @GetMapping("/error")
+    public String errorPage(){
+        return "redirect:/";
     }
 
 
