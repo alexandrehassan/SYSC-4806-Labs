@@ -77,10 +77,5 @@ public class AppController{
         return "redirect:/addressbook/"+book.getId();
     }
 
-    @GetMapping("/error")
-    public String errorPage(){
-        return "redirect:/";
-    }
-
 
 }
