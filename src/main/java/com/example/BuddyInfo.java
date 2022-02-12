@@ -16,7 +16,7 @@ public class BuddyInfo{
     private Long id;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "addressbookId")
+//    @JoinColumn(name = "addressbookId")
     private AddressBook addressBook;
 
 
