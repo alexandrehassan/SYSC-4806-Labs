@@ -34,12 +34,6 @@ public class AddressBook{
         }
     }
 
-//    public BuddyInfo removeBuddy(int index){
-//        if (index >= 0 && index < buddies.size()) {
-//            return buddies.remove(index);
-//        }
-//        return null;
-//    }
 
     public void removeBuddy(Long id){
         for (int i = 0; i < buddies.size(); i++){

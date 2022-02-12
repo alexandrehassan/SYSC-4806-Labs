@@ -1,25 +1,25 @@
 package com.example;
 
 import com.example.repository.AddressBookRepository;
-import com.example.repository.BuddyInfoRepository;
+//import com.example.repository.BuddyInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class AppController{
 
 
     @Autowired
-    AddressBookRepository repository;
+    AddressBookRepository addressBookRepository;
+
+//    @Autowired
+//    BuddyInfoRepository buddyInfoRepository;
 
     @GetMapping("/")
     public String frontPage(Model model){
-        model.addAttribute("books", repository.findAll());
+        model.addAttribute("books", addressBookRepository.findAll());
         return "index";
     }
 
@@ -27,7 +27,7 @@ public class AppController{
     @GetMapping("/new")
     public String newBuddy(Model model){
         AddressBook book = new AddressBook();
-        repository.save(book);
+        addressBookRepository.save(book);
 
         model.addAttribute("addressbook", book);
         model.addAttribute("newBuddy", new BuddyInfo());
@@ -37,10 +37,10 @@ public class AppController{
 
     @GetMapping("/addressbook/{ID}")
     public String addBuddy(Model model, @PathVariable Long ID){
-        AddressBook book = repository.findById(ID).orElse(null);
+        AddressBook book = addressBookRepository.findById(ID).orElse(null);
         if(book == null){
             book = new AddressBook(ID);
-            repository.save(book);
+            addressBookRepository.save(book);
         }
         model.addAttribute("addressbook", book);
         model.addAttribute("newBuddy", new BuddyInfo());
@@ -49,14 +49,14 @@ public class AppController{
 
     @PostMapping("/addressbook/{ID}")
     public String addBuddyToAddressBook(@ModelAttribute BuddyInfo buddy, Model model, @PathVariable Long ID){
-        AddressBook book = repository.findById(ID).orElse(null);
+        AddressBook book = addressBookRepository.findById(ID).orElse(null);
         if(book == null){
             book = new AddressBook(ID);
-            repository.save(book);
+            addressBookRepository.save(book);
         }
         book.addBuddy(buddy);
         buddy.setAddressBook(book);
-        repository.save(book);
+        addressBookRepository.save(book);
 
         model.addAttribute("addressbook", book);
         model.addAttribute("newBuddy", new BuddyInfo());
@@ -66,15 +66,15 @@ public class AppController{
 
     @GetMapping("/delete/{ID}")
     public String removeAddressBook(Model model, @PathVariable Long ID){
-        repository.findById(ID).ifPresent(book -> repository.delete(book));
+        addressBookRepository.findById(ID).ifPresent(book -> addressBookRepository.delete(book));
         return "redirect:/";
     }
 
     @GetMapping("/deletebuddy/{ID}/{BID}")
     public String removeBuddy(Model model, @PathVariable Long ID,@PathVariable Long BID){
-        AddressBook book = repository.findById(ID).orElseThrow();
+        AddressBook book = addressBookRepository.findById(ID).orElseThrow();
         book.removeBuddy(BID);
-        repository.save(book);
+        addressBookRepository.save(book);
         return "redirect:/addressbook/"+book.getId();
     }
 
