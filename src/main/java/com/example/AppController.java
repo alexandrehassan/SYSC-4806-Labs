@@ -23,7 +23,7 @@ public class AppController{
 
 
     @GetMapping("/new")
-    public String newBuddy(Model model){
+    public String newBuddy(){
         return "redirect:/addressbook/" + addressBookRepository.save(new AddressBook()).getId();
     }
 
@@ -32,7 +32,6 @@ public class AppController{
     public String addBuddy(Model model, @PathVariable Long ID){
         AddressBook book = addressBookRepository.findById(ID).orElse(null);
         if(book == null) return "redirect:/new";
-
         model.addAttribute("addressbook", book).addAttribute("newBuddy", new BuddyInfo());
         return "addressbook";
     }
@@ -40,9 +39,7 @@ public class AppController{
     @PostMapping("/addressbook/{ID}")
     public String addBuddyToAddressBook(@ModelAttribute BuddyInfo buddy, Model model, @PathVariable Long ID){
         AddressBook book = addressBookRepository.findById(ID).orElseThrow();
-
         addressBookRepository.save(book.addBuddy(buddy));
-
         model.addAttribute("addressbook", book).addAttribute("newBuddy", new BuddyInfo());
         return "addressbook";
     }
@@ -58,10 +55,7 @@ public class AppController{
     public String removeBuddy(@PathVariable Long ID, @PathVariable Long BID){
         AddressBook book = addressBookRepository.findById(ID).orElse(null);
         if(book == null) return "redirect:/";
-
         addressBookRepository.save(book.removeBuddy(BID));
         return "redirect:/addressbook/" + book.getId();
     }
-
-
 }
