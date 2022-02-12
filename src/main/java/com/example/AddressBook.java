@@ -41,13 +41,15 @@ public class AddressBook{
 //        return null;
 //    }
 
-    public BuddyInfo removeBuddy(Long id){
+    public void removeBuddy(Long id){
         for (int i = 0; i < buddies.size(); i++){
             if (buddies.get(i).getId().equals(id)){
-                return buddies.remove(i);
+                System.out.println(this);
+                buddies.remove(i);
+                System.out.println(this);
+                return;
             }
         }
-        return null;
     }
 
     public BuddyInfo getBuddyInfo(int index){

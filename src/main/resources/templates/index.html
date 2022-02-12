@@ -1,14 +1,20 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="English">
 <head>
-    <script src="http://localhost:35729/livereload.js"></script>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Landing page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <p>Get a new Address book <a href="/new">here</a></p>
-<tr th:each="book : ${books}">
-    <p> Open book th:text="${book.ID}"  <a href="/addressbook/${book.ID}">yes</a></p>
-</tr>
-</body>
+
+<table>
+    <tbody>
+    <tr th:each="book: ${books}">
+        <td>
+            <a th:href="@{'/addressbook/'+${book.id}}">Go to Address Book <span th:text="${book.id}"></span> </a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
 </html>

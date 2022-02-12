@@ -70,5 +70,13 @@ public class AppController{
         return "redirect:/";
     }
 
+    @GetMapping("/deletebuddy/{ID}/{BID}")
+    public String removeBuddy(Model model, @PathVariable Long ID,@PathVariable Long BID){
+        AddressBook book = repository.findById(ID).orElseThrow();
+        book.removeBuddy(BID);
+        repository.save(book);
+        return "redirect:/addressbook/"+book.getId();
+    }
+
 
 }
