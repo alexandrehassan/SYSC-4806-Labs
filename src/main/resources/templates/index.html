@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="English">
+<head>
+    <title>Landing page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>Get a new Address book <a href="/new">here</a></p>
+
+<table>
+    <tbody>
+    <tr th:each="book: ${books}">
+        <td>
+            <a th:href="@{'/addressbook/'+${book.id}}">Go to Address Book <span th:text="${book.id}"></span> </a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</html>

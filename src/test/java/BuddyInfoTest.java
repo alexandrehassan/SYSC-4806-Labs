@@ -1,4 +1,4 @@
-import com.example.labs.BuddyInfo;
+import com.example.BuddyInfo;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
