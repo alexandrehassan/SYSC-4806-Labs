@@ -39,9 +39,6 @@ public class AddressBook{
         buddies.add(buddy);
     }
 
-    public void deleteBuddy(int index) {
-        buddies.remove(index);
-    }
 
     public int findBuddyIndex(String userName, String phone) {
         BuddyInfo toFind = new BuddyInfo(userName, phone, this.id);
