@@ -2,14 +2,13 @@ name: Java CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 
 jobs:
-  build:
+  CI:
     runs-on: ubuntu-latest
-    name: CI
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
