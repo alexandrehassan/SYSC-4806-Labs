@@ -13,20 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 @Controller
 public class AddressBookController{
-    //Add address book repository
     @Autowired
     AddressBookRepository addressBookRepository;
-
-    //add buddy info repository
     @Autowired
     BuddyInfoRepository buddyInfoRepository;
-
 
     @PostMapping("/AddressBook/new")
     public void newAddressBook(@RequestBody AddressBook book){
         addressBookRepository.save(book);
     }
-
 
     @PostMapping("/AddressBook/addBuddy")
     public void addBuddy(@RequestBody BuddyInfo buddy){

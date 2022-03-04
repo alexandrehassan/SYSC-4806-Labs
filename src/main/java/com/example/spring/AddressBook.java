@@ -23,11 +23,6 @@ public class AddressBook{
         buddies = new ArrayList<>();
     }
 
-    public AddressBook(String userName){
-        this.userName = userName;
-        buddies = new ArrayList<>();
-    }
-
     public String getUserName(){
         return userName;
     }
@@ -40,25 +35,6 @@ public class AddressBook{
         buddies.add(buddy);
     }
 
-
-    public int findBuddyIndex(String userName, String phone){
-        BuddyInfo toFind = new BuddyInfo(userName, phone, this.id);
-
-        for (BuddyInfo buddy : buddies) if(buddy.equals(toFind)) return buddies.indexOf(buddy);
-        return -1;
-    }
-
-    public List<BuddyInfo> getBuddies(){
-        return buddies;
-    }
-
-    public void setBuddies(List<BuddyInfo> buddies){
-        this.buddies = buddies;
-    }
-
-    public BuddyInfo getBuddyAt(int index){
-        return buddies.get(index);
-    }
 
     public int getNumBuddies(){
         return buddies.size();
@@ -73,8 +49,5 @@ public class AddressBook{
         return id;
     }
 
-    public void setId(Long id){
-        this.id = id;
-    }
 
 }

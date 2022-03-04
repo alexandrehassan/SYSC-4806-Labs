@@ -3,7 +3,6 @@ package com.example.spring;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Objects;
 
 /**
  * @author Alexandre Hassan
@@ -25,11 +24,6 @@ public class BuddyInfo{
         this.addressBookId = 0L;
     }
 
-    public BuddyInfo(String name, String phone, Long addressBookId){
-        this.name = name;
-        this.phone = phone;
-        this.addressBookId = addressBookId;
-    }
 
     public String getName(){
         return name;
@@ -51,9 +45,7 @@ public class BuddyInfo{
         return id;
     }
 
-    public void setId(Long id){
-        this.id = id;
-    }
+
 
     public Long getAddressBookId(){
         return addressBookId;
@@ -63,23 +55,4 @@ public class BuddyInfo{
         this.addressBookId = addressBookId;
     }
 
-    @Override
-    public int hashCode(){
-        return Objects.hash(name, phone, addressBookId, id);
-    }
-
-    @Override
-    public boolean equals(Object o){
-        if(this == o) return true;
-        if(o == null || getClass() != o.getClass()) return false;
-        BuddyInfo that = (BuddyInfo) o;
-        return name.equals(that.name) &&
-                phone.equals(that.phone) &&
-                addressBookId.equals(that.addressBookId);
-    }
-
-    @Override
-    public String toString(){
-        return "BuddyInfo [name=" + name + ", phone=" + phone + ", addressBookId=" + addressBookId + ", id=" + id + "]";
-    }
 }
