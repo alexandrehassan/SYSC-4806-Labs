@@ -1,9 +1,9 @@
 package com.example.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller for the address book application.
@@ -11,22 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author Alexandre Hassan
  * @version March 03, 2022
  */
-@Controller
+@RestController
 public class AddressBookController{
-    //Add address book repository
     @Autowired
     AddressBookRepository addressBookRepository;
-
-    //add buddy info repository
     @Autowired
     BuddyInfoRepository buddyInfoRepository;
-
 
     @PostMapping("/AddressBook/new")
     public void newAddressBook(@RequestBody AddressBook book){
         addressBookRepository.save(book);
-    }
 
+    }
 
     @PostMapping("/AddressBook/addBuddy")
     public void addBuddy(@RequestBody BuddyInfo buddy){
