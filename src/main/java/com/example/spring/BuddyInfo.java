@@ -45,8 +45,6 @@ public class BuddyInfo{
         return id;
     }
 
-
-
     public Long getAddressBookId(){
         return addressBookId;
     }

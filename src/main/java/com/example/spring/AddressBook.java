@@ -33,11 +33,15 @@ public class AddressBook{
 
     public void addBuddy(BuddyInfo buddy){
         buddies.add(buddy);
+        buddy.setAddressBookId(id);
     }
-
 
     public int getNumBuddies(){
         return buddies.size();
+    }
+
+    public List<BuddyInfo> getBuddies(){
+        return buddies;
     }
 
     public Long getAddressBookId(){
