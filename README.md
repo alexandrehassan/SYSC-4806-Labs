@@ -6,7 +6,7 @@ Simple Java Spring Boot application created for SYSC-4806-Labs. Available on [He
 
 ### Features
 - Allows users to create, and add Buddies and AddressBook entries.
-- Buddies can't be added until a address book entry is created.
+- Buddies can't be added until an address book entry is created.
 - All the Buddies and AddressBook entries are stored in an H2 database.
 - All the Buddies and AddressBook entries are shown on the home page.
 - Application has only one single page.
