@@ -46,27 +46,10 @@ function newBuddy() {
 
 }
 
-// function setAddressBookIDs(data) {
-//     addressBookIds = data;
-// }
 
-// function getAddressBooks() {
-//     $.ajax({
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-//         type: "GET",
-//         url: '/AddressBook',
-//         dataType: "json",
-//         success: function (data) {
-//             setAddressBookIDs(data);
-//         }
-//     });
-// }
-
-function getIDs() {
-    let addressBookIds = [];
+function updateData() {
+    $('#books').empty();
+    $('#buddies').empty();
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -75,52 +58,20 @@ function getIDs() {
         type: "GET",
         url: '/AddressBook',
         dataType: "json",
-        async: false,
         success: function (data) {
             data._embedded.AddressBook.forEach(function (addressBook) {
-                console.log("80 " + addressBook.addressBookId);
-                addressBookIds.push(addressBook.addressBookId);
+                updateBook(addressBook.userName, addressBook.addressBookId, addressBook.numBuddies);
             });
-            return addressBookIds;
-        }
-    });
-    // console.log("HELLO");
-    console.log("86 " + addressBookIds);
-    // console.log(addressBookIds[0]);
-
-}
-
-function updateData() {
-    let test = getIDs();
-    // console.log("93 " +test.length);
-    // // for (let i = 0; i <test.length; i++) {
-    // //     console.log(test[i]);
-    // // }
-    // console.log("97 " + test[0]);
-    // console.log("98 " +test);
-    $('#books').empty();
-    $('#buddies').empty();
-
-    test.forEach(getAddressBook);
-}
-
-function getAddressBook(value) {
-    console.log("106 value: " + value);
-    $.ajax({
-        type: "GET",
-        url: '/AddressBook/' + value,
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            updateBook(data, value, data.numBuddies);
         }
     });
 }
 
-function updateBook(data, value, numBuddies) {
+
+
+function updateBook(userName, value, numBuddies) {
     $('#books').append(
         "<tr>" +
-        "<td>" + data.userName + "</td>" +
+        "<td>" + userName + "</td>" +
         "<td>" + value + "</td>" +
         "</tr>"
     );
