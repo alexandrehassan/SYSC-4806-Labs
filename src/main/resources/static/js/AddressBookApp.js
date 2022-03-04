@@ -1,4 +1,4 @@
-let count = 0;
+
 
 function newAddressBook() {
     let input = document.getElementById('addressBookName').value;
@@ -15,7 +15,6 @@ function newAddressBook() {
         })
     });
     setTimeout(function () {
-        count++;
         updateData();
     }, 1000);
 }
@@ -39,7 +38,6 @@ function newBuddy() {
         })
     });
     setTimeout(function () {
-        count++;
         updateData();
     }, 1000);
 

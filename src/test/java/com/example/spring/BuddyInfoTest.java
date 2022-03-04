@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BuddyInfoTest{
     BuddyInfo buddyInfo;
+
     @BeforeEach
     void setUp(){
         buddyInfo = new BuddyInfo();

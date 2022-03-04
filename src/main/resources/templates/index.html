@@ -8,10 +8,14 @@
     <script type="text/javascript" th:src="@{/js/AddressBookApp.js}"></script>
 </head>
 <body onload="updateData()">
+
+<h1>Address Book Application</h1>
+<h2 >Forms</h2>
 <form>
     <fieldset>
         <legend>Address Book</legend>
-        <p>Name: <input type="text" id="addressBookName"/></p>
+        <label for="addressBookName"></label>
+        <input type="text" id="addressBookName"/>
         <p><button type = "button" onclick="newAddressBook()">Add New Address Book </button></p>
     </fieldset>
 </form>
@@ -19,8 +23,12 @@
 <form>
     <fieldset>
         <legend>Buddy</legend>
-        <p>Name: <input type="text" id="buddyName"/></p>
-        <p>Phone: <input type="text" id="buddyPhone" /></p>
+        <label for="buddyName">Name: </label>
+        <input type="text" id="buddyName"/>
+
+        <label for="buddyPhone">Phone: </label>
+        <input type="text" id="buddyPhone" />
+
         <label for="addressBookSelect">Address Book:</label>
         <select id="addressBookSelect" name="addressBookSelect">
             <option value="">Select an address book</option>
@@ -29,7 +37,8 @@
     </fieldset>
 </form>
 
-<h1>Address Books</h1>
+<h2>Display</h2>
+<h3>Address Books</h3>
 <table>
     <tr>
         <th>Name</th>
@@ -39,7 +48,7 @@
     </tbody>
 </table>
 
-<h1> Buddies </h1>
+<h3> Buddies </h3>
 <table>
     <tr>
         <th>Name</th>
@@ -49,8 +58,6 @@
     <tbody id="buddies">
     </tbody>
 </table>
-
-</section>
 
 </body>
 
