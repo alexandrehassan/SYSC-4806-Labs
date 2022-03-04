@@ -21,7 +21,11 @@
         <legend>Buddy</legend>
         <p>Name: <input type="text" id="buddyName"/></p>
         <p>Phone: <input type="text" id="buddyPhone" /></p>
-        <p>AddressBook ID: <input type="text" id="aBID"/></p>
+        <label for="addressBookSelect">Address Book:</label>
+        <select id="addressBookSelect" name="addressBookSelect">
+            <option value="">Select an address book</option>
+        </select>
+<!--        <p>AddressBook ID: <input type="text" id="aBID"/></p>-->
         <p><button type = "button" onclick="newBuddy()">Add New Buddy</button></p>
     </fieldset>
 </form>

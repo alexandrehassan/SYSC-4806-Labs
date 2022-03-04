@@ -22,7 +22,7 @@ function newAddressBook() {
 }
 
 function newBuddy() {
-    let ABID_input = document.getElementById('aBID').value;
+    let ABID_input = document.getElementById('addressBookSelect').value;
     let name_input = document.getElementById('buddyName').value;
     let phone_input = document.getElementById('buddyPhone').value;
     $.ajax({
@@ -50,6 +50,7 @@ function newBuddy() {
 function updateData() {
     $('#books').empty();
     $('#buddies').empty();
+    $('#addressBookSelect').empty();
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -61,6 +62,8 @@ function updateData() {
         success: function (data) {
             data._embedded.AddressBook.forEach(function (addressBook) {
                 updateBook(addressBook.userName, addressBook.addressBookId, addressBook.numBuddies);
+                document.getElementById("addressBookSelect").innerHTML +=
+                    "<option value=" + addressBook.addressBookId + ">" + addressBook.addressBookId + "</option>";
             });
         }
     });
