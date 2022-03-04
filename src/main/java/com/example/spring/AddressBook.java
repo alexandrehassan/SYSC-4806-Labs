@@ -6,12 +6,13 @@ import java.util.List;
 
 /**
  * Class made for SYSC 4806 course to hold multiple a Buddies information
+ *
  * @author Alexandre Hassan
  * @version March 03, 2022
  */
 @Entity
 public class AddressBook{
-    @OneToMany (cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<BuddyInfo> buddies;
     @Id
     @GeneratedValue
@@ -22,55 +23,58 @@ public class AddressBook{
         buddies = new ArrayList<>();
     }
 
-    public AddressBook(String userName) {
+    public AddressBook(String userName){
         this.userName = userName;
         buddies = new ArrayList<>();
     }
 
-    public String getUserName() {
+    public String getUserName(){
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(String userName){
         this.userName = userName;
     }
 
-    public void addBuddy(BuddyInfo buddy) {
+    public void addBuddy(BuddyInfo buddy){
         buddies.add(buddy);
     }
 
 
-    public int findBuddyIndex(String userName, String phone) {
+    public int findBuddyIndex(String userName, String phone){
         BuddyInfo toFind = new BuddyInfo(userName, phone, this.id);
 
         for (BuddyInfo buddy : buddies) if(buddy.equals(toFind)) return buddies.indexOf(buddy);
         return -1;
     }
-    public List<BuddyInfo> getBuddies() { return buddies; }
 
-    public void setBuddies(List<BuddyInfo> buddies) {
+    public List<BuddyInfo> getBuddies(){
+        return buddies;
+    }
+
+    public void setBuddies(List<BuddyInfo> buddies){
         this.buddies = buddies;
     }
 
-    public BuddyInfo getBuddyAt(int index) {
+    public BuddyInfo getBuddyAt(int index){
         return buddies.get(index);
     }
 
-    public int getNumBuddies() {
+    public int getNumBuddies(){
         return buddies.size();
     }
 
-    public Long getAddressBookId() {
+    public Long getAddressBookId(){
         return id;
     }
 
 
-    public Long getId() {
+    public Long getId(){
         return id;
     }
 
     public void setId(Long id){
-        this.id=id;
+        this.id = id;
     }
 
 }

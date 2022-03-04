@@ -16,7 +16,6 @@ function newAddressBook() {
     });
     setTimeout(function () {
         count++;
-        // addressBookIds.push(count);
         updateData();
     }, 1000);
 }
@@ -68,8 +67,6 @@ function updateData() {
         }
     });
 }
-
-
 
 function updateBook(userName, value, numBuddies) {
     $('#books').append(

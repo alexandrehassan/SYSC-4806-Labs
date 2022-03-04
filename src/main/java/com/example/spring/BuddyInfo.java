@@ -10,7 +10,7 @@ import java.util.Objects;
  * @version March 03, 2022
  */
 @Entity
-public class BuddyInfo {
+public class BuddyInfo{
     private String name;
     private String phone;
     private Long addressBookId;
@@ -19,59 +19,59 @@ public class BuddyInfo {
     @GeneratedValue
     private Long id;
 
-    public BuddyInfo() {
+    public BuddyInfo(){
         this.name = "";
         this.phone = "";
         this.addressBookId = 0L;
     }
 
-    public BuddyInfo(String name, String phone, Long addressBookId) {
+    public BuddyInfo(String name, String phone, Long addressBookId){
         this.name = name;
         this.phone = phone;
         this.addressBookId = addressBookId;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name){
         this.name = name;
     }
 
-    public String getPhone() {
+    public String getPhone(){
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(String phone){
         this.phone = phone;
     }
 
-    public Long getId() {
+    public Long getId(){
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id){
         this.id = id;
     }
 
-    public Long getAddressBookId() {
+    public Long getAddressBookId(){
         return addressBookId;
     }
 
-    public void setAddressBookId(Long addressBookId) {
+    public void setAddressBookId(Long addressBookId){
         this.addressBookId = addressBookId;
     }
 
     @Override
-    public String toString() {
-        return "BuddyInfo [name=" + name + ", phone=" + phone + ", addressBookId=" + addressBookId + ", id=" + id + "]";
+    public int hashCode(){
+        return Objects.hash(name, phone, addressBookId, id);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
         BuddyInfo that = (BuddyInfo) o;
         return name.equals(that.name) &&
                 phone.equals(that.phone) &&
@@ -79,7 +79,7 @@ public class BuddyInfo {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, phone, addressBookId, id);
+    public String toString(){
+        return "BuddyInfo [name=" + name + ", phone=" + phone + ", addressBookId=" + addressBookId + ", id=" + id + "]";
     }
 }
