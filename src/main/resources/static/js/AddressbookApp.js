@@ -85,7 +85,7 @@ function updateBook(userName, value, numBuddies) {
 function getBuddies(value, numBuddies) {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8080/AddressBook/' + value + '/buddies',
+        url: '/AddressBook/' + value + '/buddies',
         dataType: "json",
         success: function (data) {
             updateBuddies(data, numBuddies);
